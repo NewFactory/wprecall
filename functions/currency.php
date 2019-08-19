@@ -3,11 +3,14 @@
 //Перечень действующих валют
 function rcl_get_currency_list(){
     
-    $cad = (is_admin())? '$CA': '$CA';
+    $rub = (is_admin())? 'p': '<i class="rcli fa-rub"></i>';
     
     return array(
-        'CAD' => array('cad',$cad,'$CA'),
+        'RUB' => array('руб',$rub,'<span class="ruble-symbol">P<span>–</span></span>'),
+        'UAH' => array('гривен','грн','грн'),
+        'KZT' => array('тенге','тнг','тнг'),
         'USD' => array('dollars','<i class="rcli fa-usd"></i>','$'),
+        'EUR' => array('euro','<i class="rcli fa-eur"></i>','€'),
     );
 }
 
@@ -63,7 +66,7 @@ function get_current_currency($post_id){
 //Вывод основной валюты сайта
 function rcl_get_primary_currency($type=0){
     global $rmag_options;
-    $cur = (isset($rmag_options['primary_cur']))? $rmag_options['primary_cur']:'CAD';
+    $cur = (isset($rmag_options['primary_cur']))? $rmag_options['primary_cur']:'RUB';
     return rcl_get_currency($cur,$type);
 }
 function rcl_primary_currency($type=0){
